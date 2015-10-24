@@ -1,0 +1,124 @@
+\makeatletter
+\newcommand{\openbox}{\leavevmode
+  \hbox to.77778em{%
+  \hfil\vrule
+  \vbox to.675em{\hrule width.6em\vfil\hrule}%
+  \vrule\hfil}}
+\gdef\proofSymbol{\openbox}
+\newcommand{\proofname}{Proof}
+\newcounter{proof}\newcounter{currproofctr}\newcounter{endproofctr}%
+\newenvironment{proof}[1][\proofname]{
+  \th@nonumberplain
+  \def\theorem@headerfont{\itshape}%
+  \normalfont
+  \theoremsymbol{\ensuremath{_\blacksquare}}
+  \@thm{proof}{proof}{{#1}.}}%
+  {\@endtheorem}
+\makeatother
+
+\theoremstyle{plain}
+\theoremheaderfont{\bfseries\itshape}
+\theorembodyfont{\normalfont}
+
+\newtheorem{lm}{Lemma}[chapter]
+\newtheorem{ax}[lm]{Axiom}
+\newtheorem{sz}[lm]{Satz}
+\newtheorem{df}[lm]{Definition}
+\newtheorem{kl}[lm]{Korollar}
+\newtheorem{cd}[lm]{Quellcode}
+\newtheorem{bs}[lm]{Beispiel}
+\newtheorem{afg}[lm]{Aufgabe}
+\newtheorem{al}[lm]{Algorithmus}
+
+\setlength{\textwidth}{15cm}
+\setlength{\textheight}{26cm}
+\setlength{\topmargin}{-1.78cm}
+\setlength{\evensidemargin}{13mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\headheight}{20pt}
+\parskip 6pt plus 1pt minus 1pt
+\parindent0pt
+\pagestyle{fancy}
+
+\fancyhf{}
+\fancyfoot[OR]{\thepage}
+\fancyfoot[EL]{\thepage}
+
+\fancyhead[OR]{\rightmark}
+\fancyhead[EL]{\leftmark}
+
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\usepackage{color}
+\usepackage{yfonts}
+
+\makeatletter
+\newcommand\mynobreakpar{\par\nobreak\@afterheading}
+\makeatother
+
+\newcounter{zahl}
+\newcommand{\ag}{\stepcounter{zahl}\textbf{\thesection -\arabic{zahl}}}
+\newcommand{\itema}{\item[\textit{\ag}]}
+\newcommand{\itemas}{\item[$\star$\textit{\ag}]}
+\newenvironment{tasks}{\setcounter{zahl}{0} \noindent\hrulefill\\\textbf{Übungen}\mynobreakpar\begin{enumerate}}{\end{enumerate}}
+\newenvironment{tasksn}{\noindent\hrulefill\\\textbf{Übungen}\mynobreakpar\begin{enumerate}}{\end{enumerate}}
+
+\newcommand{\sg}{\stepcounter{zahl}\textbf{\arabic{section}.\arabic{subsection}-\arabic{zahl}}}
+\newcommand{\items}{\item[\textit{\sg}]}
+\newcommand{\itemss}{\item[$\star$\textit{\sg}]}
+\newenvironment{sols}{\setcounter{zahl}{0}\begin{enumerate}}{\end{enumerate}}
+
+\newcommand{\emphpar}[1]{\emph{#1}\index{#1}}
+\newcommand{\emphpart}[2]{\emph{#1}\index{#2!#1}}
+\newcommand{\emphparr}[1]{\emph{#1}}
+
+\newcommand{\f}[1][f]{#1(\cdot)}
+\newcommand{\fs}[1][f]{#1{\scriptstyle(\cdot)}}
+\newcommand{\D}[1][f]{D_{\fs[#1]}}
+\newcommand{\W}[1][f]{W_{\fs[#1]}}
+\newcommand{\Zi}[1][f]{Z_{\fs[#1]}}
+\newcommand{\G}[1][f]{G_{\fs[#1]}}
+
+\usepackage{twoopt}
+\newcommandtwoopt{\nint}[4][a][b]{\int\limits_{#1}^{#2}\!\!#3\;\mathrm{d}#4}
+
+\usepackage{titlesec}
+\usepackage{tocloft}
+
+\newcommand{\secmark}{}
+\newcommand{\marktotoc}[1]{\renewcommand{\secmark}{#1}}
+\newenvironment{advanced}{\renewcommand{\secmark}{$\star$\quad}%
+\addtocontents{toc}{\protect\marktotoc{$\star$\quad}}}{\addtocontents{toc}{\protect\marktotoc{}}}
+
+\titleformat{\chapter}
+{\titlerule[3pt]
+    \vspace{0.8ex}%
+    \normalfont\Large\bfseries}{\thechapter}{20pt}{}
+    [\vspace{1.2ex}%
+    \titlerule]
+\titleformat{\section}
+    {\titlerule[1.5pt]
+     \vspace{0.8ex}%
+    \normalfont\large\bfseries}{\secmark\thesection}{1em}{}
+\titleformat{\subsection}
+    {\normalfont\normalsize\bfseries}{\secmark}{0em}{}
+\titleformat{\subsubsection}
+    {\normalfont\normalsize\bfseries}{\secmark}{0em}{}
+\titleformat{\paragraph}[runin]
+    {\normalfont\normalsize\bfseries}{}{0em}{}
+\titleformat{\subparagraph}[runin]
+    {\normalfont\normalsize\bfseries}{}{0em}{}
+
+\titlespacing*{\chapter}      {0pt}{50pt}{40pt}
+\titlespacing*{\section}      {0pt}{3.5ex plus 1ex minus 0.2ex}{2.3ex plus 0.2ex}
+\titlespacing*{\subsection}   {0pt}{3.25ex plus 1ex minus 0.2ex}{1.5ex plus 0.2ex}
+\titlespacing*{\subsubsection}{0pt}{3.25ex plus 1ex minus 0.2ex}{1.5ex plus 0.2ex}
+\titlespacing*{\paragraph}   {0pt}{3.25ex plus 1ex minus 0.2ex}{1em}
+\titlespacing*{\subparagraph} {\parindent}{3.25ex plus 1ex minus 0.2ex}{1em}
+
+\newcommand{\chapters}[1]{\begin{advanced}\chapter{#1}\end{advanced}}
+\newcommand{\sections}[1]{\begin{advanced}\section{#1}\end{advanced}}
+\newcommand{\subsections}[1]{\begin{advanced}\subsection{#1}\end{advanced}}
+\newcommand{\subsubsections}[1]{\begin{advanced}\subsubsection{#1}\end{advanced}}
+
