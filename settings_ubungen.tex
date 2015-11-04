@@ -27,14 +27,15 @@
 \newtheorem{kl}[lm]{Korollar}
 \newtheorem{cd}[lm]{Quellcode}
 \newtheorem{bs}[lm]{Beispiel}
-\newtheorem{afg}[lm]{Aufgabe}
+\newtheorem{alg}[lm]{Algorithmus}
+\newtheorem{afg}{Aufgabe}[section]
 
 \setlength{\textwidth}{15cm}
-\setlength{\textheight}{26cm}
+\setlength{\textheight}{25cm}
 \setlength{\topmargin}{-1.78cm}
 \setlength{\evensidemargin}{13mm}
 \setlength{\oddsidemargin}{-5mm}
-\setlength{\headheight}{28pt}
+\setlength{\headheight}{35pt}
 \parskip6pt plus 1pt minus 1pt
 \parindent0pt
 \pagestyle{fancy}
@@ -43,7 +44,7 @@
 \fancyfoot[R]{\thepage}
 
 \fancyhead[L]{\headst}
-\fancyhead[R]{Philip Wellnitz\\Matrikelnummer: 2558958}
+\fancyhead[R]{Philip Wellnitz (2558958)\\Gruppe: \gruppe}
 
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\footrulewidth}{0.5pt}
@@ -106,3 +107,26 @@
 \newcommand{\subsections}[1]{\begin{advanced}\subsection{#1}\end{advanced}}
 \newcommand{\subsubsections}[1]{\begin{advanced}\subsubsection{#1}\end{advanced}}
 
+\setcounter{section}{\blattnummer}
+
+\usepackage{color}
+\definecolor{bluekeywords}{rgb}{0.13,0.13,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{redstrings}{rgb}{0.9,0,0}
+
+\lstdefinestyle{CSharp}{language=[Sharp]C,
+numbers=left,
+stepnumber=1,
+showspaces=false,
+showtabs=false,
+breaklines=true,
+showstringspaces=false,
+breakatwhitespace=true,
+keywordstyle=\bfseries,
+moredelim=**[is][\sc]{@}{@},
+morekeywords={then, do}
+}
+\lstset{style=CSharp}
+
+\newcommand{\lr}{\Longleftrightarrow}
+\newcommand{\rr}{\Longrightarrow}

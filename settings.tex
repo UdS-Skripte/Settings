@@ -4,14 +4,14 @@
   \hfil\vrule
   \vbox to.675em{\hrule width.6em\vfil\hrule}%
   \vrule\hfil}}
-\gdef\proofSymbol{\openbox}
+\gdef\proofSymbol{•}
 \newcommand{\proofname}{Proof}
 \newcounter{proof}\newcounter{currproofctr}\newcounter{endproofctr}%
 \newenvironment{proof}[1][\proofname]{
   \th@nonumberplain
   \def\theorem@headerfont{\itshape}%
   \normalfont
-  \theoremsymbol{\ensuremath{_\blacksquare}}
+  \theoremsymbol{•}
   \@thm{proof}{proof}{{#1}.}}%
   {\@endtheorem}
 \makeatother
